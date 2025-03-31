@@ -58,6 +58,31 @@ namespace L3WebAPI.WebAPI.Controllers {
 		{
 			return Ok(await _gamesService.SearchByName(name));
 		}
+
+		[HttpPut("{id}")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		public async Task<ActionResult> UpdateGame(Guid id, [FromBody] UpdateGameRequest request)
+		{
+			try
+			{
+				await _gamesService.UpdateGame(id, request);
+				return Ok();
+			}
+			catch (BuisnessRuleException ex)
+			{
+				return BadRequest(ex);
+			}
+		}
+
+
+		[HttpDelete("{id}")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		public async Task<ActionResult> DeleteGame(Guid id)
+		{
+			await _gamesService.DeleteGame(id);
+			return Ok();
+		}
 	}
 	
 }

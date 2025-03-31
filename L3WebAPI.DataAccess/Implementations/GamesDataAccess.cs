@@ -47,5 +47,20 @@ namespace L3WebAPI.DataAccess.Implementations {
 		public async Task<IEnumerable<GameDAO>> SearchByName(string name) {
 			return games.Where(x => x.Name.Contains(name, StringComparison.InvariantCultureIgnoreCase));
 		}
+
+		public async Task UpdateGame(GameDAO game)
+		{
+			var gameById = await GetGameById(game.AppId);
+			if (gameById != null)
+			{
+				games.Remove(game);
+			}
+			games.Add(game);
+		}
+
+		public async Task DeleteGame(Guid id)
+		{
+			games.Remove(await GetGameById(id));
+		}
 	}
 }

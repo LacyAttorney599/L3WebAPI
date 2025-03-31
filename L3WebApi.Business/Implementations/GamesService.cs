@@ -102,5 +102,61 @@ namespace L3WebApi.Business.Implementations
 				return [];
 			}
 		}
+
+		
+
+
+		public async Task UpdateGame(Guid id, UpdateGameRequest game)
+		{
+			try
+			{
+				if (string.IsNullOrWhiteSpace(game.Name))
+				{
+					throw new BuisnessRuleException("Le nom doit etre defini !");
+				}
+
+				if (game.Name.Length > 1000)
+				{
+					throw new BuisnessRuleException("Le nom doit faire moins de 1000 caractères !");
+				}
+				
+				if (game.Prices.Count() < 1)
+				{
+					throw new BuisnessRuleException("Le jeu doit avoir au moins un prix !");
+				}
+
+				_gameDataAccess.UpdateGame(new GameDAO
+				{
+					AppId = Guid.NewGuid(),
+					Name = game.Name,
+					Prices = game.Prices.Select(price => new PriceDAO()
+					{
+						Currency = price.Currency,
+						Valeur = price.Valeur,
+					})
+				});
+			}
+			
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Erreur lors de la modification du jeu");
+				throw;
+			}
+		}
+
+		public async Task DeleteGame(Guid id)
+		{
+			try
+			{
+				
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Erreur lors de la suppression du jeu {id}", id);
+				throw;
+			}
+		}
+	
+
 	}
 }
