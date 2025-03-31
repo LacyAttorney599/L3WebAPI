@@ -1,4 +1,5 @@
-﻿using L3WebApi.Business.Exceptions;
+﻿using System.Collections;
+using L3WebApi.Business.Exceptions;
 using L3WebApi.Business.Interfaces;
 using L3WebAPI.Common.Dao;
 using L3WebAPI.Common.Dto;
@@ -88,21 +89,17 @@ namespace L3WebApi.Business.Implementations
 		}
 		
 		
-		public async Task<GameDTO?> GetGameByName(string name)
+		public async Task<IEnumerable<GameDTO>> SearchByName(string name)
 		{
 			try
 			{
-				var game = await _gameDataAccess.GetGameByName(name);
-				/*if (game is null) {
-					return null;
-				}*/
-
-				return game?.ToDto();
+				return (await _gameDataAccess.SearchByName(name)).Select(game => game.ToDto());
+			
 			}
 			catch (Exception ex)
 			{
 				_logger.LogError(ex, "Erreur lors de la récupération du jeu {name}", name);
-				return null;
+				return [];
 			}
 		}
 	}

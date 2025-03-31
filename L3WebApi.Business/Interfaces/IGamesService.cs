@@ -1,4 +1,5 @@
-﻿using L3WebAPI.Common.Dto;
+﻿using System.Collections;
+using L3WebAPI.Common.Dto;
 using L3WebAPI.Common.Request;
 
 namespace L3WebApi.Business.Interfaces {
@@ -6,6 +7,6 @@ namespace L3WebApi.Business.Interfaces {
 		Task<IEnumerable<GameDTO>> GetAllGames();
 		Task<GameDTO?> GetGameById(Guid id);
 		Task CreateGame(CreateGameRequest game);
-		Task<GameDTO?> GetGameByName(string name);
+		Task<IEnumerable<GameDTO>> SearchByName(string name);
 	}
 }

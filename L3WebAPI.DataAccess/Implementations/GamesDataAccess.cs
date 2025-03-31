@@ -44,8 +44,8 @@ namespace L3WebAPI.DataAccess.Implementations {
 			games.Add(game);
 		}
 		
-		public async Task<GameDAO?> GetGameByName(string name) {
-			return games.FirstOrDefault(x => x.Name == name);
+		public async Task<IEnumerable<GameDAO>> SearchByName(string name) {
+			return games.Where(x => x.Name.Contains(name, StringComparison.InvariantCultureIgnoreCase));
 		}
 	}
 }

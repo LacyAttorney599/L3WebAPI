@@ -2,6 +2,7 @@
 using L3WebApi.Business.Interfaces;
 using L3WebAPI.Common.Dto;
 using L3WebAPI.Common.Request;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace L3WebAPI.WebAPI.Controllers {
@@ -53,15 +54,9 @@ namespace L3WebAPI.WebAPI.Controllers {
 		[HttpGet("search/{name}")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
-		public async Task<ActionResult<GameDTO>> GetGameByName(string name)
-		{ 
-			var game = await _gamesService.GetGameByName(name);
-			if (game is null) {
-				return NotFound();
-			}
-
-			return Ok(game);
-			
+		public async Task<ActionResult<IEnumerable<GameDTO>>> SearchByName(string name)
+		{
+			return Ok(await _gamesService.SearchByName(name));
 		}
 	}
 	
