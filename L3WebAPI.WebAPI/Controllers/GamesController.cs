@@ -20,6 +20,7 @@ namespace L3WebAPI.WebAPI.Controllers {
 		public async Task<ActionResult<IEnumerable<GameDTO>>> GetAllGames() {
 			return Ok(await _gamesService.GetAllGames());
 		}
+		
 
 		[HttpGet("{id}")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
@@ -32,6 +33,7 @@ namespace L3WebAPI.WebAPI.Controllers {
 
 			return Ok(game);
 		}
+		
 
 		[HttpPost]
 		[ProducesResponseType(StatusCodes.Status200OK)]

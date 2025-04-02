@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L3WebAPI.DataAccess", "L3We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L3WebAPI.Common", "L3WebAPI.Common\L3WebAPI.Common.csproj", "{61AD9BE6-B2D6-44AC-8322-963D7E86FB44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L3WebAPI.WebAPI.Tests", "L3WebAPI.WebAPI.Tests\L3WebAPI.WebAPI.Tests.csproj", "{4505ED7D-2B75-4806-A2CB-549AD3AD3957}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{61AD9BE6-B2D6-44AC-8322-963D7E86FB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61AD9BE6-B2D6-44AC-8322-963D7E86FB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61AD9BE6-B2D6-44AC-8322-963D7E86FB44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4505ED7D-2B75-4806-A2CB-549AD3AD3957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4505ED7D-2B75-4806-A2CB-549AD3AD3957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4505ED7D-2B75-4806-A2CB-549AD3AD3957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4505ED7D-2B75-4806-A2CB-549AD3AD3957}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
